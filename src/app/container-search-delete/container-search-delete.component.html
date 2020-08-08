@@ -1,0 +1,51 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+    <div class="row">
+               <div id="custom-search-input">
+                                <div class="input-group col-md-12" style="text-align: center">
+                                    <input type="text" class="search-query form-control" placeholder="Search With owner id"  name="ownerId" [(ngModel)]="ownerId"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" type="button" (click)="getContainersByOwnerId()">
+                                            <span class=" glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+    </div>
+    </div>
+<div class="container">
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr  *ngIf="containers.length > 0" >
+            <th>ContainerId</th>
+            <th>ContainerOwnerId</th>
+            <th>CustomerId</th>
+            <th>Status</th>
+            <th>EventTimestamp</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of containers">
+            <td>{{c.containerId}}</td>
+            <td>{{c.containerOwnerId}}</td>
+            <td>{{c.customerId}}</td>
+            <td>{{c.status}}</td>
+            <td>{{c.eventTimestamp}}</td>
+            <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteContainer(c.containerId)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+          </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+
+<div>
+    <a class="nav-link" routerLink="/home">Home</a>
+</div>
